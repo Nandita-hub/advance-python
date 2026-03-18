@@ -1,0 +1,624 @@
+mysql> CREATE DATABASE giet2;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| db                 |
+| giet               |
+| giet2              |
+| information_schema |
+| mini_project       |
+| mini_project2      |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+9 rows in set (0.02 sec)
+
+mysql> CREATE DATABASE giet2
+    -> ;
+ERROR 1007 (HY000): Can't create database 'giet2'; database exists
+mysql> USE giet2;
+Database changed
+mysql> CREATE TABLE students (
+    ->     roll INT,
+    ->     student_name VARCHAR(50),
+    ->     city VARCHAR(50),
+    ->     course VARCHAR(50),
+    ->     marks INT,
+    ->     gender CHAR(1)
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> INSERT INTO students VALUES
+    -> (101, 'Aman Kumar', 'Delhi', 'B.Tech', 85, 'M'),
+    -> (102, 'Priya Sharma', 'Bengaluru', 'B.Sc', 90, 'F'),
+    -> (103, 'Rohan Verma', 'Mumbai', 'B.Com', 78, 'M'),
+    -> (104, 'Sanya Rao', 'Hyderabad', 'BBA', 88, 'F'),
+    -> (105, 'Vikram Patel', 'Ahmedabad', 'B.Tech', 92, 'M'),
+    -> (106, 'Neha Gupta', 'Pune', 'B.Sc', 81, 'F'),
+    -> (107, 'Anuj Mehta', 'Chennai', 'BCA', 75, 'M'),
+    -> (108, 'Ishita Das', 'Kolkata', 'BBA', 89, 'F'),
+    -> (109, 'Karan Joshi', 'Noida', 'B.Tech', 95, 'M');
+Query OK, 9 rows affected (0.01 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| db                 |
+| giet               |
+| giet2              |
+| information_schema |
+| mini_project       |
+| mini_project2      |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM students;
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  102 | Priya Sharma | Bengaluru | B.Sc   |    90 | F      |
+|  103 | Rohan Verma  | Mumbai    | B.Com  |    78 | M      |
+|  104 | Sanya Rao    | Hyderabad | BBA    |    88 | F      |
+|  105 | Vikram Patel | Ahmedabad | B.Tech |    92 | M      |
+|  106 | Neha Gupta   | Pune      | B.Sc   |    81 | F      |
+|  107 | Anuj Mehta   | Chennai   | BCA    |    75 | M      |
+|  108 | Ishita Das   | Kolkata   | BBA    |    89 | F      |
+|  109 | Karan Joshi  | Noida     | B.Tech |    95 | M      |
++------+--------------+-----------+--------+-------+--------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM students;
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  102 | Priya Sharma | Bengaluru | B.Sc   |    90 | F      |
+|  103 | Rohan Verma  | Mumbai    | B.Com  |    78 | M      |
+|  104 | Sanya Rao    | Hyderabad | BBA    |    88 | F      |
+|  105 | Vikram Patel | Ahmedabad | B.Tech |    92 | M      |
+|  106 | Neha Gupta   | Pune      | B.Sc   |    81 | F      |
+|  107 | Anuj Mehta   | Chennai   | BCA    |    75 | M      |
+|  108 | Ishita Das   | Kolkata   | BBA    |    89 | F      |
+|  109 | Karan Joshi  | Noida     | B.Tech |    95 | M      |
++------+--------------+-----------+--------+-------+--------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT student_name FROM students;
++--------------+
+| student_name |
++--------------+
+| Aman Kumar   |
+| Priya Sharma |
+| Rohan Verma  |
+| Sanya Rao    |
+| Vikram Patel |
+| Neha Gupta   |
+| Anuj Mehta   |
+| Ishita Das   |
+| Karan Joshi  |
++--------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT student_name, city FROM students;
++--------------+-----------+
+| student_name | city      |
++--------------+-----------+
+| Aman Kumar   | Delhi     |
+| Priya Sharma | Bengaluru |
+| Rohan Verma  | Mumbai    |
+| Sanya Rao    | Hyderabad |
+| Vikram Patel | Ahmedabad |
+| Neha Gupta   | Pune      |
+| Anuj Mehta   | Chennai   |
+| Ishita Das   | Kolkata   |
+| Karan Joshi  | Noida     |
++--------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT roll, marks FROM students;
++------+-------+
+| roll | marks |
++------+-------+
+|  101 |    85 |
+|  102 |    90 |
+|  103 |    78 |
+|  104 |    88 |
+|  105 |    92 |
+|  106 |    81 |
+|  107 |    75 |
+|  108 |    89 |
+|  109 |    95 |
++------+-------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM students WHERE student_name = 'Aman Kumar';
++------+--------------+-------+--------+-------+--------+
+| roll | student_name | city  | course | marks | gender |
++------+--------------+-------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi | B.Tech |    85 | M      |
++------+--------------+-------+--------+-------+--------+
+1 row in set (0.01 sec)
+
+mysql> SELECT * FROM students WHERE city = 'Delhi';
++------+--------------+-------+--------+-------+--------+
+| roll | student_name | city  | course | marks | gender |
++------+--------------+-------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi | B.Tech |    85 | M      |
++------+--------------+-------+--------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM students WHERE gender = 'M';
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  103 | Rohan Verma  | Mumbai    | B.Com  |    78 | M      |
+|  105 | Vikram Patel | Ahmedabad | B.Tech |    92 | M      |
+|  107 | Anuj Mehta   | Chennai   | BCA    |    75 | M      |
+|  109 | Karan Joshi  | Noida     | B.Tech |    95 | M      |
++------+--------------+-----------+--------+-------+--------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM students WHERE course = 'B.Tech';
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  105 | Vikram Patel | Ahmedabad | B.Tech |    92 | M      |
+|  109 | Karan Joshi  | Noida     | B.Tech |    95 | M      |
++------+--------------+-----------+--------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM students WHERE marks = 85;
++------+--------------+-------+--------+-------+--------+
+| roll | student_name | city  | course | marks | gender |
++------+--------------+-------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi | B.Tech |    85 | M      |
++------+--------------+-------+--------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM students WHERE marks > 80;
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  102 | Priya Sharma | Bengaluru | B.Sc   |    90 | F      |
+|  104 | Sanya Rao    | Hyderabad | BBA    |    88 | F      |
+|  105 | Vikram Patel | Ahmedabad | B.Tech |    92 | M      |
+|  106 | Neha Gupta   | Pune      | B.Sc   |    81 | F      |
+|  108 | Ishita Das   | Kolkata   | BBA    |    89 | F      |
+|  109 | Karan Joshi  | Noida     | B.Tech |    95 | M      |
++------+--------------+-----------+--------+-------+--------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM students WHERE marks < 90;
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  103 | Rohan Verma  | Mumbai    | B.Com  |    78 | M      |
+|  104 | Sanya Rao    | Hyderabad | BBA    |    88 | F      |
+|  106 | Neha Gupta   | Pune      | B.Sc   |    81 | F      |
+|  107 | Anuj Mehta   | Chennai   | BCA    |    75 | M      |
+|  108 | Ishita Das   | Kolkata   | BBA    |    89 | F      |
++------+--------------+-----------+--------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM students WHERE gender = 'M' AND marks > 80;
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  105 | Vikram Patel | Ahmedabad | B.Tech |    92 | M      |
+|  109 | Karan Joshi  | Noida     | B.Tech |    95 | M      |
++------+--------------+-----------+--------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM students WHERE gender = 'F' OR city = 'Hyderabad';
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  102 | Priya Sharma | Bengaluru | B.Sc   |    90 | F      |
+|  104 | Sanya Rao    | Hyderabad | BBA    |    88 | F      |
+|  106 | Neha Gupta   | Pune      | B.Sc   |    81 | F      |
+|  108 | Ishita Das   | Kolkata   | BBA    |    89 | F      |
++------+--------------+-----------+--------+-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM students WHERE student_name LIKE 'A%';
++------+--------------+---------+--------+-------+--------+
+| roll | student_name | city    | course | marks | gender |
++------+--------------+---------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi   | B.Tech |    85 | M      |
+|  107 | Anuj Mehta   | Chennai | BCA    |    75 | M      |
++------+--------------+---------+--------+-------+--------+
+2 rows in set (0.01 sec)
+
+mysql> SELECT * FROM students WHERE student_name LIKE '%h';
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM students WHERE city LIKE '%pur%';
+Empty set (0.01 sec)
+
+mysql> SELECT * FROM students WHERE student_name LIKE '%a';
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  102 | Priya Sharma | Bengaluru | B.Sc   |    90 | F      |
+|  103 | Rohan Verma  | Mumbai    | B.Com  |    78 | M      |
+|  106 | Neha Gupta   | Pune      | B.Sc   |    81 | F      |
+|  107 | Anuj Mehta   | Chennai   | BCA    |    75 | M      |
++------+--------------+-----------+--------+-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> UPDATE students
+    -> SET student_name = 'Rohit'
+    -> WHERE roll = 103;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM students WHERE student_name LIKE '%h';
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM students WHERE student_name LIKE '%a';
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  102 | Priya Sharma | Bengaluru | B.Sc   |    90 | F      |
+|  106 | Neha Gupta   | Pune      | B.Sc   |    81 | F      |
+|  107 | Anuj Mehta   | Chennai   | BCA    |    75 | M      |
++------+--------------+-----------+--------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> Priya Sharma
+    -> Sanya Rao
+    -> Neha Gupta
+    -> UPDATE students
+    -> SET student_name = 'Rohit'
+    -> WHERE roll = 103;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Priya Sharma
+Sanya Rao
+Neha Gupta
+UPDATE students
+SET student_name = 'Rohit'
+WHE' at line 1
+mysql> UPDATE students
+    -> SET student_name = 'Rohit'
+    -> WHERE roll = 103;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> SELECT * FROM students WHERE student_name LIKE '%h';
+Empty set (0.00 sec)
+
+mysql> CREATE DATABASE giet2;
+ERROR 1007 (HY000): Can't create database 'giet2'; database exists
+mysql> DROP DATABASE giet2;
+Query OK, 1 row affected (0.07 sec)
+
+mysql> CREATE DATABASE giet2;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> USE giet2;
+Database changed
+mysql> CREATE TABLE students (
+    ->     roll INT,
+    ->     student_name VARCHAR(50),
+    ->     city VARCHAR(50),
+    ->     course VARCHAR(50),
+    ->     marks INT,
+    ->     gender CHAR(1)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO students VALUES
+    -> (101, 'Aman Kumar', 'Delhi', 'B.Tech', 85, 'M'),
+    -> (102, 'Priya Sharma', 'Bengaluru', 'B.Sc', 90, 'F'),
+    -> (103, 'Rohan Verma', 'Mumbai', 'B.Com', 78, 'M'),
+    -> (104, 'Sanya Rao', 'Hyderabad', 'BBA', 88, 'F'),
+    -> (105, 'Vikram Patel', 'Ahmedabad', 'B.Tech', 92, 'M'),
+    -> (106, 'Neha Gupta', 'Pune', 'B.Sc', 81, 'F'),
+    -> (107, 'Anuj Mehta', 'Chennai', 'BCA', 75, 'M'),
+    -> (108, 'Ishita Das', 'Kolkata', 'BBA', 89, 'F'),
+    -> (109, 'Karan Joshi', 'Noida', 'B.Tech', 95, 'M');
+Query OK, 9 rows affected (0.01 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+mysql> -- 1. Show all data from the students table
+mysql> SELECT * FROM students;
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  102 | Priya Sharma | Bengaluru | B.Sc   |    90 | F      |
+|  103 | Rohan Verma  | Mumbai    | B.Com  |    78 | M      |
+|  104 | Sanya Rao    | Hyderabad | BBA    |    88 | F      |
+|  105 | Vikram Patel | Ahmedabad | B.Tech |    92 | M      |
+|  106 | Neha Gupta   | Pune      | B.Sc   |    81 | F      |
+|  107 | Anuj Mehta   | Chennai   | BCA    |    75 | M      |
+|  108 | Ishita Das   | Kolkata   | BBA    |    89 | F      |
+|  109 | Karan Joshi  | Noida     | B.Tech |    95 | M      |
++------+--------------+-----------+--------+-------+--------+
+9 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 2. Display only the student_name column
+mysql> SELECT student_name FROM students;
++--------------+
+| student_name |
++--------------+
+| Aman Kumar   |
+| Priya Sharma |
+| Rohan Verma  |
+| Sanya Rao    |
+| Vikram Patel |
+| Neha Gupta   |
+| Anuj Mehta   |
+| Ishita Das   |
+| Karan Joshi  |
++--------------+
+9 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 3. Display student_name and city
+mysql> SELECT student_name, city FROM students;
++--------------+-----------+
+| student_name | city      |
++--------------+-----------+
+| Aman Kumar   | Delhi     |
+| Priya Sharma | Bengaluru |
+| Rohan Verma  | Mumbai    |
+| Sanya Rao    | Hyderabad |
+| Vikram Patel | Ahmedabad |
+| Neha Gupta   | Pune      |
+| Anuj Mehta   | Chennai   |
+| Ishita Das   | Kolkata   |
+| Karan Joshi  | Noida     |
++--------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 4. Show roll and marks
+mysql> SELECT roll, marks FROM students;
++------+-------+
+| roll | marks |
++------+-------+
+|  101 |    85 |
+|  102 |    90 |
+|  103 |    78 |
+|  104 |    88 |
+|  105 |    92 |
+|  106 |    81 |
+|  107 |    75 |
+|  108 |    89 |
+|  109 |    95 |
++------+-------+
+9 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 5. Display students whose name is 'Aman Kumar'
+mysql> SELECT * FROM students WHERE student_name = 'Aman Kumar';
++------+--------------+-------+--------+-------+--------+
+| roll | student_name | city  | course | marks | gender |
++------+--------------+-------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi | B.Tech |    85 | M      |
++------+--------------+-------+--------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 6. Show students who live in 'Delhi'
+mysql> SELECT * FROM students WHERE city = 'Delhi';
++------+--------------+-------+--------+-------+--------+
+| roll | student_name | city  | course | marks | gender |
++------+--------------+-------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi | B.Tech |    85 | M      |
++------+--------------+-------+--------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 7. Display all male students
+mysql> SELECT * FROM students WHERE gender = 'M';
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  103 | Rohan Verma  | Mumbai    | B.Com  |    78 | M      |
+|  105 | Vikram Patel | Ahmedabad | B.Tech |    92 | M      |
+|  107 | Anuj Mehta   | Chennai   | BCA    |    75 | M      |
+|  109 | Karan Joshi  | Noida     | B.Tech |    95 | M      |
++------+--------------+-----------+--------+-------+--------+
+5 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 8. Show students enrolled in 'B.Tech'
+mysql> SELECT * FROM students WHERE course = 'B.Tech';
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  105 | Vikram Patel | Ahmedabad | B.Tech |    92 | M      |
+|  109 | Karan Joshi  | Noida     | B.Tech |    95 | M      |
++------+--------------+-----------+--------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 9. Display students having marks 85
+mysql> SELECT * FROM students WHERE marks = 85;
++------+--------------+-------+--------+-------+--------+
+| roll | student_name | city  | course | marks | gender |
++------+--------------+-------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi | B.Tech |    85 | M      |
++------+--------------+-------+--------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 10. Show students with marks greater than 80
+mysql> SELECT * FROM students WHERE marks > 80;
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  102 | Priya Sharma | Bengaluru | B.Sc   |    90 | F      |
+|  104 | Sanya Rao    | Hyderabad | BBA    |    88 | F      |
+|  105 | Vikram Patel | Ahmedabad | B.Tech |    92 | M      |
+|  106 | Neha Gupta   | Pune      | B.Sc   |    81 | F      |
+|  108 | Ishita Das   | Kolkata   | BBA    |    89 | F      |
+|  109 | Karan Joshi  | Noida     | B.Tech |    95 | M      |
++------+--------------+-----------+--------+-------+--------+
+7 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 11. Display students with marks less than 90
+mysql> SELECT * FROM students WHERE marks < 90;
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  103 | Rohan Verma  | Mumbai    | B.Com  |    78 | M      |
+|  104 | Sanya Rao    | Hyderabad | BBA    |    88 | F      |
+|  106 | Neha Gupta   | Pune      | B.Sc   |    81 | F      |
+|  107 | Anuj Mehta   | Chennai   | BCA    |    75 | M      |
+|  108 | Ishita Das   | Kolkata   | BBA    |    89 | F      |
++------+--------------+-----------+--------+-------+--------+
+6 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 12. Show male students AND marks > 80
+mysql> SELECT * FROM students WHERE gender = 'M' AND marks > 80;
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  105 | Vikram Patel | Ahmedabad | B.Tech |    92 | M      |
+|  109 | Karan Joshi  | Noida     | B.Tech |    95 | M      |
++------+--------------+-----------+--------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 13. Display students who are female OR live in 'Hyderabad'
+mysql> SELECT * FROM students WHERE gender = 'F' OR city = 'Hyderabad';
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  102 | Priya Sharma | Bengaluru | B.Sc   |    90 | F      |
+|  104 | Sanya Rao    | Hyderabad | BBA    |    88 | F      |
+|  106 | Neha Gupta   | Pune      | B.Sc   |    81 | F      |
+|  108 | Ishita Das   | Kolkata   | BBA    |    89 | F      |
++------+--------------+-----------+--------+-------+--------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 14. Show students whose name starts with 'A'
+mysql> SELECT * FROM students WHERE student_name LIKE 'A%';
++------+--------------+---------+--------+-------+--------+
+| roll | student_name | city    | course | marks | gender |
++------+--------------+---------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi   | B.Tech |    85 | M      |
+|  107 | Anuj Mehta   | Chennai | BCA    |    75 | M      |
++------+--------------+---------+--------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 15. Display students whose name ends with 'a'
+mysql> SELECT * FROM students WHERE student_name LIKE '%a';
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  102 | Priya Sharma | Bengaluru | B.Sc   |    90 | F      |
+|  103 | Rohan Verma  | Mumbai    | B.Com  |    78 | M      |
+|  106 | Neha Gupta   | Pune      | B.Sc   |    81 | F      |
+|  107 | Anuj Mehta   | Chennai   | BCA    |    75 | M      |
++------+--------------+-----------+--------+-------+--------+
+4 rows in set (0.00 sec)
+
+mysql> INSERT INTO students VALUES (110, 'Test User', 'Raipur', 'BCA', 80, 'M');
+Query OK, 1 row affected (0.01 sec)
+mysql> -- 16. Show students whose city contains 'pur'
+mysql>  SELECT * FROM students WHERE city LIKE '%pur%';
++------+--------------+--------+--------+-------+--------+
+| roll | student_name | city   | course | marks | gender |
++------+--------------+--------+--------+-------+--------+
+|  110 | Test User    | Raipur | BCA    |    80 | M      |
++------+--------------+--------+--------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 17. Display all students sorted by name in ascending order
+mysql> SELECT * FROM students ORDER BY student_name ASC;
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  107 | Anuj Mehta   | Chennai   | BCA    |    75 | M      |
+|  108 | Ishita Das   | Kolkata   | BBA    |    89 | F      |
+|  109 | Karan Joshi  | Noida     | B.Tech |    95 | M      |
+|  106 | Neha Gupta   | Pune      | B.Sc   |    81 | F      |
+|  102 | Priya Sharma | Bengaluru | B.Sc   |    90 | F      |
+|  103 | Rohan Verma  | Mumbai    | B.Com  |    78 | M      |
+|  104 | Sanya Rao    | Hyderabad | BBA    |    88 | F      |
+|  105 | Vikram Patel | Ahmedabad | B.Tech |    92 | M      |
++------+--------------+-----------+--------+-------+--------+
+9 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 18. Show all students sorted by marks in descending order
+mysql> SELECT * FROM students ORDER BY marks DESC;
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  109 | Karan Joshi  | Noida     | B.Tech |    95 | M      |
+|  105 | Vikram Patel | Ahmedabad | B.Tech |    92 | M      |
+|  102 | Priya Sharma | Bengaluru | B.Sc   |    90 | F      |
+|  108 | Ishita Das   | Kolkata   | BBA    |    89 | F      |
+|  104 | Sanya Rao    | Hyderabad | BBA    |    88 | F      |
+|  101 | Aman Kumar   | Delhi     | B.Tech |    85 | M      |
+|  106 | Neha Gupta   | Pune      | B.Sc   |    81 | F      |
+|  103 | Rohan Verma  | Mumbai    | B.Com  |    78 | M      |
+|  107 | Anuj Mehta   | Chennai   | BCA    |    75 | M      |
++------+--------------+-----------+--------+-------+--------+
+9 rows in set (0.00 sec)
+
+mysql>
+mysql> -- 19. Count total number of students
+mysql> SELECT COUNT(*) AS total_students FROM students;
++----------------+
+| total_students |
++----------------+
+|              9 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> -- 20. Count number of male students
+mysql> SELECT COUNT(*) AS total_male_students FROM students WHERE gender = 'M';
++---------------------+
+| total_male_students |
++---------------------+
+|                   5 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM students WHERE city LIKE '%a%';
++------+--------------+-----------+--------+-------+--------+
+| roll | student_name | city      | course | marks | gender |
++------+--------------+-----------+--------+-------+--------+
+|  102 | Priya Sharma | Bengaluru | B.Sc   |    90 | F      |
+|  103 | Rohan Verma  | Mumbai    | B.Com  |    78 | M      |
+|  104 | Sanya Rao    | Hyderabad | BBA    |    88 | F      |
+|  105 | Vikram Patel | Ahmedabad | B.Tech |    92 | M      |
+|  107 | Anuj Mehta   | Chennai   | BCA    |    75 | M      |
+|  108 | Ishita Das   | Kolkata   | BBA    |    89 | F      |
+|  109 | Karan Joshi  | Noida     | B.Tech |    95 | M      |
+|  110 | Test User    | Raipur    | BCA    |    80 | M      |
++------+--------------+-----------+--------+-------+--------+
+8 rows in set (0.00 sec)
